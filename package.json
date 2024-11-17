@@ -1,0 +1,28 @@
+{
+  "name": "discordchangelogbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustusPlays78/DiscordChangelogBot.git"
+  },
+  "author": "JustusPlays78",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JustusPlays78/DiscordChangelogBot/issues"
+  },
+  "homepage": "https://github.com/JustusPlays78/DiscordChangelogBot#readme",
+  "dependencies": {
+    "@discordjs/rest": "^2.3.0",
+    "axios": "^1.7.7",
+    "discord-api-types": "^0.37.88",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2"
+  },
+  "type": "module"
+}
