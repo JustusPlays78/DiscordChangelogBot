@@ -19,6 +19,7 @@ This Discord bot is being done for some private things but made it available for
       "userId": "UserID",
       "roleId": "RoleID"
       }
+- Save Origin: declare an origin from where Request can come
 
 ToDo:
 - Fetch Text from Repo
