@@ -3,14 +3,15 @@ import { Client, GatewayIntentBits } from 'discord.js';
 import {fetchText, getChanges} from './text.js';
 import {createChangelogEmbed} from "./embed builder.js";
 import express from 'express';
+import cors from 'cors';
 
 
 dotenv.config();
 const token = process.env.CLIENT_AUTH_TOKEN;
-//const accesstoken = process.env.GITHUB_ACCESS_TOKEN;
+const accesstoken = process.env.GITHUB_ACCESS_TOKEN;
+const allowedOrigin = process.env.REQUEST_ORIGIN;
 
 const app = express();
-app.use(express.json());
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -18,6 +19,13 @@ const client = new Client({
         GatewayIntentBits.MessageContent,
     ],
 });
+
+app.use(express.json());
+app.use(cors({
+    origin: allowedOrigin,
+}))
+
+
 
 client.on('ready', async () => {
     console.log('Ready!');
@@ -28,13 +36,13 @@ client.on('ready', async () => {
     }
 })
 
-/*app.post('/changelog', async (message) => {
+app.post('/changelog', async (message) => {
     let result = await fetchText("https://tee.intjulscha.de/Julscha/changelog/raw/branch/main/changelog_november.md", accesstoken);
     console.log(result);
     result = await getChanges(result);
     const embed = createChangelogEmbed();
     message.channel.send({ embeds: [embed] });
-});*/
+});
 
 app.post('/add-role', async (req, res) => {
     const { guildId, userId, roleId } = req.body;
